@@ -1,0 +1,41 @@
+server:
+  port: 8006
+spring:
+  profiles:
+    active: test
+
+---
+#nacos:
+#  gateway:
+#    route:
+#      config:
+#        data-id: gateway-router
+#        group: DEFAULT_GROUP
+spring:
+  application:
+    name: cloud_provider
+  config:
+    activate:
+      on-profile: test
+  cloud:
+    nacos:
+      server-addr: 192.168.88.85:8848
+      discovery:
+        namespace: 383729fd-2284-4535-970e-f98240408192
+        group: DEFAULT_GROUP
+      config:
+        namespace: 383729fd-2284-4535-970e-f98240408192
+        group: DEFAULT_GROUP
+        file-extension: yml
+dubbo:
+  scan:
+    base-packages: cn.skyjilygao.cloud.service
+  application:
+    # dubbo 协议
+    name: dubbo
+    # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
+    port: -1
+    host: 127.0.0.1
+  registry:
+    address: nacos://192.168.88.85:8848
+#    port: 8848

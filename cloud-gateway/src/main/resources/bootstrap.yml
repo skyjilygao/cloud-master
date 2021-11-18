@@ -1,0 +1,87 @@
+spring:
+  profiles:
+    active: test
+---
+#server:
+#  port: 8008
+#
+#spring:
+##  profiles: test
+#  application:
+#    name: sky-cloud-gateway
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#        namespace: 6b4efd3b-6700-4e97-aa06-6c5d21e2a829
+#        group: sky-cloud-group
+#      config:
+#        server-addr: 127.0.0.1:8848
+#        namespace: 6b4efd3b-6700-4e97-aa06-6c5d21e2a829
+#        group: sky-cloud-group  # 默认分组就是sky-cloud-group，如果使用默认分组可以不配置
+#        file-extension: yml   #默认properties
+#    gateway:
+#      # 路由数组[路由 就是指定当请求满足什么条件的时候转到哪个微服务]
+#      routes:
+#        - id: sky-cloud-oauth             # 当前路由的标识, 要求唯一
+#          uri: lb://sky-cloud-oauth       # lb指的是从 nacos 中按照名称获取微服务,并遵循负载均衡策略
+#          predicates:                    # 断言(就是路由转发要满足的条件)
+#            - Path=/oauth/**             # 当请求路径满足Path指定的规则时,才进行路由转发
+#        # 我们⾃定义的路由 ID，保持唯⼀
+#        - id: sky-cloud-gateway
+#          # ⽬标服务地址（部署多实例）
+#          uri: lb://sky-cloud-gateway
+#          # gateway⽹关从服务注册中⼼获取实例信息然后负载后路由
+#          # 断⾔：路由条件，Predicate 接受⼀个输⼊参数，返回⼀个布尔值结果。该接⼝包含多种默认⽅法来将 Predicate 组合成其他复杂的逻辑（⽐如：与，或，⾮）。
+#          predicates:
+#            - Path=/sky-gateway/api/**
+##            - Method=GET
+#          filters:                       # 过滤器,请求在传递过程中可以通过过滤器对其进行一定的修改
+#            - StripPrefix=1              # 转发之前去掉1层路径
+#  config:
+#    activate:
+#      on-profile: test
+
+#dubbo:
+#  protocol:
+#    port: 20881
+#    name: dubbo
+---
+server:
+  port: 8008
+
+#nacos:
+#  gateway:
+#    route:
+#      config:
+#        data-id: gateway-router
+#        group: DEFAULT_GROUP
+spring:
+  application:
+    name: cloud_gateway
+  cloud:
+    nacos:
+      server-addr: 192.168.88.85:8848
+      discovery:
+        namespace: 383729fd-2284-4535-970e-f98240408192
+        group: DEFAULT_GROUP
+      config:
+        namespace: 383729fd-2284-4535-970e-f98240408192
+        group: DEFAULT_GROUP
+        file-extension: yml   #默认properties
+#    gateway:
+#    # 路由数组[路由 就是指定当请求满足什么条件的时候转到哪个微服务]
+#      routes:
+#        # 我们⾃定义的路由 ID，保持唯⼀
+#        - id: nacos-client
+#          # ⽬标服务地址（部署多实例）
+#          uri: http://www.github.com
+#          # gateway⽹关从服务注册中⼼获取实例信息然后负载后路由
+#          # 断⾔：路由条件，Predicate 接受⼀个输⼊参数，返回⼀个布尔值结果。该接⼝包含多种默认⽅法来将 Predicate 组合成其他复杂的逻辑（⽐如：与，或，⾮）。
+#          predicates:
+#            - Path=/github
+#  #            - Weight=DEFAULT_GROUP, 2
+#            - Method=GET
+  config:
+    activate:
+      on-profile: test

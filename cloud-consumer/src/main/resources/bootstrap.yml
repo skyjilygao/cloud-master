@@ -1,0 +1,34 @@
+server:
+  port: 8007
+spring:
+  profiles:
+    active: test
+---
+
+spring:
+  application:
+    name: cloudConsumer
+  config:
+    activate:
+      on-profile: test
+  cloud:
+    nacos:
+      server-addr: 192.168.88.85:8848
+      discovery:
+        namespace: 383729fd-2284-4535-970e-f98240408192
+        group: DEFAULT_GROUP
+      config:
+        namespace: 383729fd-2284-4535-970e-f98240408192
+        group: DEFAULT_GROUP
+        file-extension: yml
+dubbo:
+  protocol:
+    port: 20881
+    name: dubbo
+#    host: 127.0.0.1
+  registry:
+    # 挂载到 Spring Cloud 注册中心
+    address: nacos://192.168.88.85:8848
+  cloud:
+    # 订阅服务提供方的应用列表，订阅多个服务提供者使用 "," 连接
+    subscribed-services: cloud_provider
