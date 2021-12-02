@@ -1,5 +1,5 @@
 server:
-  port: 8007
+  port: 8109
 spring:
   profiles:
     active: test
@@ -23,12 +23,15 @@ spring:
         file-extension: yml
 dubbo:
   protocol:
-    port: 20881
+    port: 21885
     name: dubbo
 #    host: 127.0.0.1
   registry:
     # 挂载到 Spring Cloud 注册中心
-    address: nacos://192.168.88.85:8848
+    address: spring-cloud://localhost
+#    address: nacos://192.168.88.85:8848
   cloud:
     # 订阅服务提供方的应用列表，订阅多个服务提供者使用 "," 连接
     subscribed-services: cloud_provider
+  consumer:
+    check: false

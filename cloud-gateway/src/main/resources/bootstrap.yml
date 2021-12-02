@@ -48,7 +48,7 @@ spring:
 #    name: dubbo
 ---
 server:
-  port: 8008
+  port: 8200
 
 #nacos:
 #  gateway:
