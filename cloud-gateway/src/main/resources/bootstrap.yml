@@ -69,6 +69,10 @@ spring:
         namespace: 383729fd-2284-4535-970e-f98240408192
         group: DEFAULT_GROUP
         file-extension: yml   #默认properties
+    sentinel:
+      transport:
+        dashboard: 192.168.88.85:8100
+        port: 8220
 #    gateway:
 #    # 路由数组[路由 就是指定当请求满足什么条件的时候转到哪个微服务]
 #      routes:
