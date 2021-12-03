@@ -23,7 +23,7 @@ spring:
         file-extension: yml
 dubbo:
   protocol:
-    port: 21885
+    port: ${random.int[21800,21899]}
     name: dubbo
 #    host: 127.0.0.1
   registry:

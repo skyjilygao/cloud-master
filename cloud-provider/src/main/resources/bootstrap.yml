@@ -34,7 +34,7 @@ dubbo:
     # dubbo 协议
     name: dubbo
     # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
-    port: 20883
+    port: ${random.int[20890,20910]}
     host: 127.0.0.1
   registry:
     address: spring-cloud://localhost
