@@ -19,6 +19,7 @@
         <module>cloud-service</module>
         <module>cloud-consumer</module>
         <module>cloud-provider</module>
+        <module>cloud-common</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -51,6 +52,11 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-commons</artifactId>
+        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -127,6 +133,24 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
+        </dependency>
+        <!-- jwt -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.2</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+            <version>0.11.2</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
